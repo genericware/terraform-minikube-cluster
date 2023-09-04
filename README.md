@@ -2,18 +2,19 @@
 
 ## install
 
-* kvm2 or ...
-* minikube
-* kubectl
-* terraform
-* docker
+* driver
+    * linux: [kvm](https://www.linux-kvm.org/), [qemu](https://www.qemu.org/)
+* [docker](https://docs.docker.com/)
+* [minikube](https://minikube.sigs.k8s.io/docs/)
+* [kubectl](https://kubernetes.io/docs/reference/kubectl/)
+* [terraform](https://www.terraform.io/)
 
 linux:
 ```terraform
 environment = "development"
 region = "local"
 kubernetes_version = "v1.26.1"
-driver = "kvm2"
+driver = "kvm2"  # todo: test qemu2 on linux
 nodes = 1
 cpus = 16
 memory = 32768
@@ -28,6 +29,12 @@ run:
 terraform init
 terraform plan
 terraform apply
+```
+
+test:
+```shell
+cd test
+go test -v -timeout 30m
 ```
 
 pre-commit:
