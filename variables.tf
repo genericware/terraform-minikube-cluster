@@ -8,11 +8,6 @@ variable "region" {
   description = "The region name."
 }
 
-variable "kubernetes_version" {
-  type        = string
-  description = "The Kubernetes version."
-}
-
 variable "driver" {
   type        = string
   description = "The minikube driver."

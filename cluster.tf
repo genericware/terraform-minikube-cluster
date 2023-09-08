@@ -1,5 +1,4 @@
 resource "minikube_cluster" "default" {
-  kubernetes_version  = var.kubernetes_version
   cluster_name        = "minikube-${var.environment}-${var.region}"
   driver              = var.driver
   nodes               = var.nodes
