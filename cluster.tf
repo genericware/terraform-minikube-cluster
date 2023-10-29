@@ -1,10 +1,10 @@
 resource "minikube_cluster" "default" {
-  cluster_name        = "minikube-${var.environment}-${var.region}"
+  cluster_name        = var.cluster_name
   driver              = var.driver
   nodes               = var.nodes
   cpus                = var.cpus
-  memory              = "${var.memory}mb"
-  disk_size           = "${var.disk_size}mb"
+  memory              = var.memory
+  disk_size           = var.disk_size
   extra_disks         = var.extra_disks
   preload             = true
   cache_images        = true
