@@ -1,5 +1,5 @@
 # todo: remove for kustomization
-# todo: fix metadata diff caused during 'terraform plan'
+# todo: fix metadata diff caused during 'terraform plan'# todo: fix metadata diff caused during 'terraform plan'
 resource "helm_release" "argo_cd" {
   name             = "argo-cd"
   namespace        = var.namespace_argocd
@@ -8,13 +8,28 @@ resource "helm_release" "argo_cd" {
   version          = var.version_argocd
   create_namespace = true
 
+  # globally shared configuration
+  set {
+    name  = "global.logging.format"
+    value = "json"
+  }
+  set {
+    name  = "global.logging.level"
+    value = "debug"
+  }
+
+  # argo configs
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"
     value = bcrypt(var.argocd_admin_password)
   }
   set {
-    name  = "server.extraArgs[0]"
-    value = "--insecure"
+    name  = "configs.repositories.private-repo.type"
+    value = "git"
+  }
+  set {
+    name  = "configs.repositories.private-repo.url"
+    value = var.repository
   }
   set {
     name  = "configs.cm.resource\\.customizations"
@@ -43,5 +58,17 @@ resource "helm_release" "argo_cd" {
             hs.message = "Waiting for certificate"
             return hs
 EOT
+  }
+
+  # argocd server
+  set {
+    name  = "server.extraArgs[0]"
+    value = "--insecure"
+  }
+
+  # argocd application set
+  set {
+    name  = "applicationSet.service.portName"
+    value = "tcp-webhook"
   }
 }
