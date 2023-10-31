@@ -216,7 +216,7 @@ variable "version_argocd" {
 variable "version_cert_manager" {
   type        = string
   description = "The version for cert-manager."
-  default     = "1.12.2"
+  default     = "1.13.2"
 }
 
 variable "version_istio" {
