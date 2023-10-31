@@ -12,7 +12,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: templates/charts/app-of-apps
     repoURL: ${var.repository}
     targetRevision: ${var.branch}
     helm:
