@@ -1,3 +1,4 @@
+# project
 variable "name" {
   type        = string
   description = "The project name."
@@ -43,6 +44,7 @@ variable "branch" {
   description = "The repository branch."
 }
 
+# network
 variable "network_mode" {
   type        = string
   description = "The network mode."
@@ -55,6 +57,38 @@ variable "network_issuer" {
   default     = "selfsigned"
 }
 
+# authentication
+variable "argocd_admin_password" {
+  type        = string
+  description = "The ArgoCD admin password."
+  sensitive   = true
+}
+
+variable "grafana_admin_password" {
+  type        = string
+  description = "The ArgoCD admin password."
+  sensitive   = true
+}
+
+variable "minio_root_password" {
+  type        = string
+  description = "The MinIO root password."
+  sensitive   = true
+}
+
+variable "minio_loki_password" {
+  type        = string
+  description = "The MinIO loki password."
+  sensitive   = true
+}
+
+variable "minio_tempo_password" {
+  type        = string
+  description = "The MinIO tempo password."
+  sensitive   = true
+}
+
+# cluster
 variable "kubernetes_version" {
   type        = string
   description = "The kubernetes version."
@@ -95,6 +129,7 @@ variable "extra_disks" {
   description = "The number of additional disks."
 }
 
+# switch
 variable "enable_argocd" {
   type        = bool
   description = "Enables argocd."
@@ -161,6 +196,7 @@ variable "enable_kafka" {
   default     = false
 }
 
+# version
 variable "version_argocd" {
   type        = string
   description = "The version for argo-cd."
@@ -239,6 +275,7 @@ variable "version_kafka" {
   default     = "0.35.1"
 }
 
+# namespace
 variable "namespace_argocd" {
   type        = string
   description = "The namespace for argocd."
