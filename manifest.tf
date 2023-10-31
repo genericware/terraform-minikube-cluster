@@ -90,5 +90,9 @@ spec:
             enabled: ${var.enable_kafka}
             revision: ${var.version_kafka}
             namespace: ${var.namespace_kafka}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 EOT
 }
