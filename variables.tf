@@ -44,6 +44,11 @@ variable "branch" {
   description = "The repository branch."
 }
 
+variable "path" {
+  type        = string
+  description = "The repository path."
+}
+
 # network
 variable "network_mode" {
   type        = string

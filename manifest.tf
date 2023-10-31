@@ -14,6 +14,7 @@ spec:
   source:
     repoURL: ${var.repository}
     targetRevision: ${var.branch}
+    path: ${var.path}
     helm:
       values: |
         project:
