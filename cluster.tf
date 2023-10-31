@@ -6,6 +6,7 @@ resource "minikube_cluster" "default" {
   memory              = var.memory
   disk_size           = var.disk_size
   extra_disks         = var.extra_disks
+  network             = var.network
   preload             = true
   cache_images        = true
   auto_update_drivers = true
