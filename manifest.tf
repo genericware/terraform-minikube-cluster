@@ -16,7 +16,7 @@ spec:
     repoURL: ${var.repository}
     targetRevision: ${var.branch}
     helm:
-      valuesObject:
+      values: |
         project:
           name: ${var.name}
           description: ${var.description}
