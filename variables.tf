@@ -149,7 +149,7 @@ variable "enable_argocd" {
 variable "enable_cert_manager" {
   type        = bool
   description = "Enables cert-manager."
-  default     = true
+  default     = false
 }
 
 variable "enable_istio" {
