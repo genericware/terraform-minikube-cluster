@@ -5,12 +5,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
-  namespace: argocd
+  namespace: ${var.namespace_argocd}
 spec:
   destination:
-    namespace: argocd
+    namespace: ${var.namespace_argocd}
     server: https://kubernetes.default.svc
-  project: default
+  project: ${var.name}
   source:
     repoURL: ${var.repository}
     targetRevision: ${var.branch}
@@ -24,7 +24,7 @@ spec:
           environment: ${var.environment}
           region: ${var.region}
           domain: ${var.domain}
-          platform: minikube
+          platform: ${var.platform}
           profile: ${var.profile}
           repository: ${var.repository}
           branch: ${var.branch}

@@ -29,6 +29,11 @@ variable "domain" {
   description = "The domain name."
 }
 
+variable "platform" {
+  type        = string
+  description = "The platform name."
+}
+
 variable "profile" {
   type        = string
   description = "The profile name."
