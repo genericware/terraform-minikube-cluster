@@ -140,7 +140,7 @@ variable "extra_disks" {
 }
 
 variable "network" {
-  type        = number
+  type        = string
   description = "The cluster network name."
 }
 
