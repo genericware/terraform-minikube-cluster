@@ -1,7 +1,7 @@
 # todo: remove for kustomization
 # todo: fix metadata diff caused during 'terraform plan'# todo: fix metadata diff caused during 'terraform plan'
-resource "helm_release" "argo_cd" {
-  name             = "argo-cd"
+resource "helm_release" "argocd" {
+  name             = "argocd"
   namespace        = var.namespace_argocd
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
@@ -15,21 +15,13 @@ resource "helm_release" "argo_cd" {
   }
   set {
     name  = "global.logging.level"
-    value = "debug"
+    value = "info"
   }
 
   # argo configs
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"
     value = bcrypt(var.argocd_admin_password)
-  }
-  set {
-    name  = "configs.repositories.private-repo.type"
-    value = "git"
-  }
-  set {
-    name  = "configs.repositories.private-repo.url"
-    value = var.repository
   }
   set {
     name  = "configs.cm.resource\\.customizations"
