@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: ${var.repository}
+    repoURL: ${var.repository}
     targetRevision: ${var.branch}
     helm:
       values: |
