@@ -139,11 +139,6 @@ variable "extra_disks" {
   description = "The number of additional disks."
 }
 
-variable "network" {
-  type        = string
-  description = "The cluster network name."
-}
-
 # switch
 variable "enable_argocd" {
   type        = bool
