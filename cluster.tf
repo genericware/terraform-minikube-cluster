@@ -3,8 +3,8 @@ resource "minikube_cluster" "default" {
   driver              = var.driver
   nodes               = var.nodes
   cpus                = var.cpus
-  memory              = var.memory
-  disk_size           = var.disk_size
+  memory              = "${var.memory}mb"
+  disk_size           = "${var.disk_size}mb"
   extra_disks         = var.extra_disks
   preload             = true
   cache_images        = true
