@@ -10,5 +10,8 @@ resource "minikube_cluster" "default" {
   cache_images        = true
   auto_update_drivers = true
   install_addons      = true
-  addons              = []
+  addons              = [
+    "default-storageclass",
+    "storage-provisioner"
+  ]
 }
