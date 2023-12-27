@@ -35,7 +35,7 @@ resource "kubernetes_namespace" "istio_ingress" {
   }
 }
 
-resource "kubernetes_namespace" "kiali-operator" {
+resource "kubernetes_namespace" "kiali_operator" {
   metadata {
     name = "kiali-operator"
   }
@@ -80,15 +80,6 @@ resource "kubernetes_namespace" "tempo" {
 resource "kubernetes_namespace" "minio" {
   metadata {
     name = "minio"
-    labels = {
-      "istio-injection" = "enabled"
-    }
-  }
-}
-
-resource "kubernetes_namespace" "jaeger" {
-  metadata {
-    name = "jaeger"
     labels = {
       "istio-injection" = "enabled"
     }
