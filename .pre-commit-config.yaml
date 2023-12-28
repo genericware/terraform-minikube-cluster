@@ -46,6 +46,8 @@ repos:
       - id: rst-inline-touching-normal
       - id: text-unicode-replacement-char
 
+  # todo: terraform docs
+
   - repo: https://github.com/python-poetry/poetry
     rev: 1.7.1
     hooks:
