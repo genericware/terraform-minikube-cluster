@@ -1,3 +1,4 @@
+# todo: remove secret for different method
 resource "kubernetes_secret" "minio_root" {
   metadata {
     name      = "root-minio-secret"
@@ -9,6 +10,7 @@ resource "kubernetes_secret" "minio_root" {
   }
 }
 
+# todo: remove secret for different method
 resource "kubernetes_secret" "minio_loki" {
   metadata {
     name      = "loki-minio-secret"
@@ -19,6 +21,7 @@ resource "kubernetes_secret" "minio_loki" {
   }
 }
 
+# todo: remove secret for different method
 resource "kubernetes_secret" "minio_tempo" {
   metadata {
     name      = "tempo-minio-secret"
