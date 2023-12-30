@@ -1,15 +1,4 @@
 # todo: remove secret for different method
-resource "kubernetes_secret" "argocd_admin" {
-  metadata {
-    name      = "argocd-initial-admin-secret"
-    namespace = kubernetes_namespace.argocd.metadata.0.name
-  }
-  data = {
-    "password"     = var.argocd_admin_password
-  }
-}
-
-# todo: remove secret for different method
 resource "kubernetes_secret" "minio_root" {
   metadata {
     name      = "root-minio-secret"
