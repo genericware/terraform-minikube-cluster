@@ -12,6 +12,7 @@ resource "minikube_cluster" "default" {
   install_addons      = true
   addons              = [
     "default-storageclass",
-    "storage-provisioner"
+    "storage-provisioner",
+    "metrics-server"
   ]
 }
