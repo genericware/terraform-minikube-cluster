@@ -53,6 +53,9 @@ src = ["src", "tests", "docs"]
 select = ["F", "E", "W", "C90", "S", "I", "N", "D", "UP"]
 ignore = ["D100", "D104", "D106"]
 
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # pytest uses 'assert'
+
 [tool.ruff.pydocstyle]
 convention = "pep257"
 
