@@ -1,4 +1,4 @@
-name: Tests
+name: tests
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - master
       - develop
   pull_request:
-    types: [ opened, synchronize, reopened ]
 
 jobs:
   tests:
