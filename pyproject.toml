@@ -39,6 +39,8 @@ asyncio_mode = "auto"
 testpaths = ["tests"]
 
 [tool.coverage.run]
+include = ["src/*"]
+omit = ["docs/*"]
 branch = true
 
 [tool.black]

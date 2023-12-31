@@ -1,3 +1,4 @@
+# todo: remove and generate using terragrunt
 resource "kubernetes_persistent_volume" "minio" {
   metadata {
     name = "minio"
@@ -18,6 +19,7 @@ resource "kubernetes_persistent_volume" "minio" {
   }
 }
 
+# todo: remove and generate using terragrunt
 resource "kubernetes_persistent_volume" "tempo_distributed_ingester_0" {
   metadata {
     name = "tempo-distributed-ingester-0"
@@ -38,6 +40,7 @@ resource "kubernetes_persistent_volume" "tempo_distributed_ingester_0" {
   }
 }
 
+# todo: remove and generate using terragrunt
 resource "kubernetes_persistent_volume" "tempo_distributed_ingester_1" {
   metadata {
     name = "tempo-distributed-ingester-1"
@@ -58,6 +61,7 @@ resource "kubernetes_persistent_volume" "tempo_distributed_ingester_1" {
   }
 }
 
+# todo: remove and generate using terragrunt
 resource "kubernetes_persistent_volume" "tempo_distributed_ingester_2" {
   metadata {
     name = "tempo-distributed-ingester-2"
