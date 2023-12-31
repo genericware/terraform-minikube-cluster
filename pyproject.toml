@@ -1,0 +1,83 @@
+[tool.poetry]
+name = "terraform-minikube-cluster"
+version = "0.1.0"
+description = ""
+license = "MIT"
+authors = ["caerulescens <caerulescens.github@proton.me>"]
+maintainers = ["caerulescens <caerulescens.github@proton.me>"]
+readme = "README.md"
+packages = [{include = "terraform_minikube_cluster", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+pydantic = "^2.5.2"
+pydantic-settings = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
+pytest-asyncio = "^0.21.1"
+pytest-cov = "^4.1.0"
+pytest-sugar = "^0.9.7"
+tftest = "^1.8.5"
+coverage = {extras = ["toml"], version = "^7.3.2"}
+tox = "^4.11.4"
+black = "^23.9.1"
+ruff = "^0.1.7"
+mypy = "^1.7.1"
+sphinx = "^7.2.6"
+sphinx_rtd_theme = "2.0.0"
+myst-parser = "^2.0.0"
+pydocstyle = "^6.3.0"
+cython = "^3.0.2"
+pre-commit = "^3.4.0"
+
+[tool.pytest.ini_options]
+minversion = "7.1.1"
+addopts = "-ra -q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+include = ["src/*"]
+omit = ["docs/*"]
+branch = true
+
+[tool.black]
+line-length = 88
+target-version = ["py310", "py311", "py312"]
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+src = ["src", "tests", "docs"]
+select = ["F", "E", "W", "C90", "S", "I", "N", "D", "UP"]
+ignore = ["D100", "D104", "D106"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # pytest uses 'assert'
+
+[tool.ruff.pydocstyle]
+convention = "pep257"
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src", "tests", "docs"]
+plugins = ["pydantic.mypy"]
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

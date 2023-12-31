@@ -3,13 +3,15 @@ resource "minikube_cluster" "default" {
   driver              = var.driver
   nodes               = var.nodes
   cpus                = var.cpus
-  memory              = var.memory
-  disk_size           = var.disk_size
+  memory              = "${var.memory}mb"
+  disk_size           = "${var.disk_size}mb"
   extra_disks         = var.extra_disks
-  network             = var.network
   preload             = true
   cache_images        = true
   auto_update_drivers = true
   install_addons      = true
-  addons              = []
+  addons = [
+    "default-storageclass",
+    "storage-provisioner"
+  ]
 }

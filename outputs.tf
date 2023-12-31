@@ -1,4 +1,3 @@
-# fixme: unresolved reference for client_certificate, client_key, cluster_ca_certificate, host
 output "client_certificate" {
   value       = minikube_cluster.default.client_certificate
   description = "The cluster client certificate."
