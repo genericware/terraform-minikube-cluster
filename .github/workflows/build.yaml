@@ -9,6 +9,9 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.10.13, 3.11.6, 3.12.0]
     steps:
       - uses: actions/checkout@v3
         with:
