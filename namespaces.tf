@@ -17,4 +17,3 @@ resource "kubernetes_namespace" "minio" {
     }
   }
 }
-
