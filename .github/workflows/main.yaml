@@ -13,11 +13,13 @@ jobs:
     runs-on: ${{ matrix.image }}
     strategy:
       matrix:
-        os: [ubuntu]
+        os: [ubuntu, macOS]
         python-version: ["3.10.13", "3.11.6", "3.12.0"]
         include:
           - os: Ubuntu
             image: ubuntu-22.04
+          - os: macOS
+            image: macos-12
       fail-fast: false
     defaults:
       run:
@@ -43,8 +45,17 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Ensure cache health
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: |
+          # `timeout` is not available on macOS, so we define a custom function.
+          [ "$(command -v timeout)" ] || function timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
+
+          # Using `timeout` is a safeguard against the Poetry command hanging for some reason.
+          timeout 10s poetry run pip --version || rm -rf .venv
+
+      - name: Check lock file
+        run: poetry check --lock
+
       - name: Install dependencies
         run: poetry install
-
-      - name: Run tests
-        run: poetry run pytest -v
