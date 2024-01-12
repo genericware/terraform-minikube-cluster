@@ -40,6 +40,11 @@ variable "driver" {
   description = "The minikube driver."
 }
 
+variable "network" {
+  type = optional(string)
+  description = "The minikube network."
+}
+
 variable "nodes" {
   type        = number
   description = "The number of nodes."
