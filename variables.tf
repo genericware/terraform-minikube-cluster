@@ -41,8 +41,9 @@ variable "driver" {
 }
 
 variable "network" {
-  type = optional(string)
+  type = string
   description = "The minikube network."
+  default = null
 }
 
 variable "nodes" {
