@@ -29,7 +29,6 @@ sphinx_rtd_theme = "2.0.0"
 myst-parser = "^2.0.0"
 pydocstyle = "^6.3.0"
 cython = "^3.0.2"
-pre-commit = "^3.4.0"
 
 [tool.pytest.ini_options]
 minversion = "7.1.1"
