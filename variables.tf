@@ -20,7 +20,7 @@ variable "network" {
   nullable    = true
 
   validation {
-    condition     = contains([null, "socket_vmnet"], var.network)
+    condition     = var.network == null || var.network == "socket_vmnet"
     error_message = "Valid option(s) for 'network': null, 'socket_vmnet'"
   }
 }
@@ -30,7 +30,7 @@ variable "nodes" {
   description = "The number of nodes."
 
   validation {
-    condition     = var.nodes != 1
+    condition     = var.nodes == 1
     error_message = "Valid option(s) for 'nodes': 1"
   }
 }
