@@ -8,18 +8,19 @@ variable "driver" {
   description = "The minikube driver."
 
   validation {
-    condition = contains(["kvm2", "qemu2"], var.driver)
+    condition     = contains(["kvm2", "qemu2"], var.driver)
     error_message = "Valid option(s) for 'driver': 'kvm2', 'qemu2'"
   }
 }
 
 variable "network" {
-  type = optional(string)
+  type        = string
   description = "The minikube network."
-  default = null
+  default     = null
+  nullable    = true
 
   validation {
-    condition = contains([null, "socket_vmnet"], var.network)
+    condition     = contains([null, "socket_vmnet"], var.network)
     error_message = "Valid option(s) for 'network': null, 'socket_vmnet'"
   }
 }
@@ -29,7 +30,7 @@ variable "nodes" {
   description = "The number of nodes."
 
   validation {
-    condition = var.nodes != 1
+    condition     = var.nodes != 1
     error_message = "Valid option(s) for 'nodes': 1"
   }
 }
