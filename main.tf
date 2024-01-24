@@ -22,6 +22,7 @@ resource "minikube_cluster" "default" {
   install_addons      = true
   addons = [
     "default-storageclass",
-    "storage-provisioner" # todo: csi driver
+    "storage-provisioner",
+    "metrics-server"
   ]
 }
