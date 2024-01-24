@@ -21,8 +21,8 @@ resource "minikube_cluster" "default" {
   auto_update_drivers = true
   install_addons      = true
   addons = [
-    "default-storageclass",
-    "storage-provisioner",
+    "volumesnapshots",
+    "csi-hostpath-driver",
     "metrics-server"
   ]
 }
