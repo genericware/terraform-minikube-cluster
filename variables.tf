@@ -8,7 +8,7 @@ variable "driver" {
   description = "The minikube driver."
 
   validation {
-    condition     = contains(["kvm2", "qemu2"], var.driver)
+    condition     = contains(["kvm2", "qemu2", "hyperkit"], var.driver)
     error_message = "Valid option(s) for 'driver': 'kvm2', 'qemu2'"
   }
 }
