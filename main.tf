@@ -23,8 +23,6 @@ resource "minikube_cluster" "default" {
   addons = [
     "default-storageclass",
     "storage-provisioner",
-    "volumesnapshots",
-    "csi-hostpath-driver",
     "metrics-server"
   ]
 }
