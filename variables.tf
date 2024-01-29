@@ -20,7 +20,7 @@ variable "network" {
   nullable    = true
 
   validation {
-    condition     = contains([null, "builtin", "socketvm_net"], var.network)
+    condition     = var.network == null || contains(["builtin", "socketvm_net"], var.network)
     error_message = "Valid option(s) for 'network': null, 'builtin', 'socket_vmnet'"
   }
 }
