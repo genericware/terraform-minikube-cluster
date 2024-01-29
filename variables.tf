@@ -8,8 +8,8 @@ variable "driver" {
   description = "The minikube driver."
 
   validation {
-    condition     = contains(["kvm2", "qemu2", "hyperkit"], var.driver)
-    error_message = "Valid option(s) for 'driver': 'kvm2', 'qemu2'"
+    condition     = contains(["docker", "kvm2", "qemu2"], var.driver)
+    error_message = "Valid option(s) for 'driver': 'docker', 'kvm2', 'qemu2'"
   }
 }
 
@@ -20,19 +20,14 @@ variable "network" {
   nullable    = true
 
   validation {
-    condition     = var.network == null || var.network == "socket_vmnet"
-    error_message = "Valid option(s) for 'network': null, 'socket_vmnet'"
+    condition     = contains([null, "builtin", "socketvm_net"], var.network)
+    error_message = "Valid option(s) for 'network': null, 'builtin', 'socket_vmnet'"
   }
 }
 
 variable "nodes" {
   type        = number
   description = "The number of nodes."
-
-  validation {
-    condition     = var.nodes == 1
-    error_message = "Valid option(s) for 'nodes': 1"
-  }
 }
 
 variable "cpus" {
