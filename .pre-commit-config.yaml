@@ -47,7 +47,7 @@ repos:
     rev: v0.17.0
     hooks:
       - id: terraform-docs-docker
-        args: ["--output-file", "README.md", "."]
+        args: ["--output-file", "README.terraform.md", "."]
 
   - repo: https://github.com/python-poetry/poetry
     rev: 1.7.1
