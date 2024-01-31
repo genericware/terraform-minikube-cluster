@@ -21,7 +21,6 @@ resource "minikube_cluster" "default" {
   auto_update_drivers = true
   install_addons      = true
   addons = [
-    "ingress",
     "default-storageclass",
     "storage-provisioner",
     "metrics-server"
