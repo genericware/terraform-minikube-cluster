@@ -11,6 +11,7 @@ resource "minikube_cluster" "default" {
   cluster_name        = var.cluster_name
   driver              = var.driver
   network             = var.network
+  cni                 = var.cni
   nodes               = var.nodes
   cpus                = var.cpus
   memory              = format("%dmb", var.memory)
