@@ -1,3 +1,4 @@
+# todo: tox + pre-commit
 name: Build
 
 on:
