@@ -22,11 +22,11 @@ resource "minikube_cluster" "default" {
   auto_update_drivers = true
   install_addons      = true
   extra_config = [
-    "apiServer.enable-admission-plugins=\"NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota\"",
-    "controllerManager.allocate-node-cidrs=\"true\"",
-    "controllerManager.leader-elect=\"false\"",
-    "scheduler.leader-elect=\"false\"",
-    "etcd.proxy-refresh-interval=\"70000\"",
+    "apiServer.enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota",
+    "controllerManager.allocate-node-cidrs=true",
+    "controllerManager.leader-elect=false",
+    "scheduler.leader-elect=false",
+    "etcd.proxy-refresh-interval=70000",
   ]
   addons = [
     "default-storageclass",
