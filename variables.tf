@@ -28,7 +28,7 @@ variable "network" {
 variable "cni" {
   type        = string
   description = "The minikube cni plugin."
-  default     = null
+  default     = "auto"
   nullable    = true
 }
 
