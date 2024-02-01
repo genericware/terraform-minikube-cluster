@@ -11,7 +11,6 @@ resource "minikube_cluster" "default" {
   cluster_name        = var.cluster_name
   driver              = var.driver
   network             = var.network
-  cni                 = var.cni
   nodes               = var.nodes
   cpus                = var.cpus
   memory              = format("%dmb", var.memory)
@@ -21,13 +20,6 @@ resource "minikube_cluster" "default" {
   cache_images        = true
   auto_update_drivers = true
   install_addons      = true
-  extra_config = [
-    "api-server.enable-admission-plugins=\"NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota\"",
-    "controller-manager.allocate-node-cidrs=\"true\"",
-    "controller-manager.leader-elect=\"false\"",
-    "scheduler.leader-elect=\"false\"",
-    "etcd.proxy-refresh-interval=\"70000\"",
-  ]
   addons = [
     "default-storageclass",
     "storage-provisioner",

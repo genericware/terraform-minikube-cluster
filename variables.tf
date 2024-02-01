@@ -25,13 +25,6 @@ variable "network" {
   }
 }
 
-variable "cni" {
-  type        = string
-  description = "The minikube cni plugin."
-  default     = "auto"
-  nullable    = true
-}
-
 variable "nodes" {
   type        = number
   description = "The number of nodes."
