@@ -1,29 +1,54 @@
 # terraform-minikube-cluster
 
-[//]: # (todo: description)
+A `terraform` project for `minikube` clusters.
 
 ## dependencies
 
-| dependency     | description                                |
-|----------------|--------------------------------------------|
-| pyenv          | python version management                  |
-| poetry         | python packaging and dependency management |
-| terraform      |                                            |
-| tflint         |                                            |
-| terraform-docs |                                            |
+| name                                                   | description                                         |
+|--------------------------------------------------------|-----------------------------------------------------|
+| [pyenv](https://github.com/pyenv/pyenv)                | python version management                           |
+| [poetry](https://github.com/python-poetry)             | python packaging and dependency management          |
+| [pre-commit](https://github.com/pre-commit/pre-commit) | multi-language package manager for pre-commit hooks |
+| [terraform](https://github.com/hashicorp/terraform)    | infrastructure as code tool                         |
+| [minikube](https://github.com/kubernetes/minikube)     | local kubernetes cluster                            | 
 
 ## install
 
-[//]: # (todo: linux kvm2 specific driver install)
-[//]: # (todo: macos qemu2 specific driver install)
-
-## run
-
-[//]: # (todo: linux kvm2 specific quickstart example)
-[//]: # (todo: macos qemu2 specific quickstart example)
-
-cluster:
+development:
 ```shell
+poetry install
+poetry shell
+pre-commit install
+```
+
+production:
+```shell
+poetry install --without dev
+```
+
+## build
+
+> [!IMPORTANT]  
+> `src/terraform_minikube_cluster` is not currently used.
+
+package:
+```shell
+poetry build
+```
+
+## usage
+
+run:
+```shell
+cat <<EOF > terraform.tfvars
+cluster_name = "minikube"
+driver       = "docker"
+nodes        = 2
+cpus         = 4
+memory       = 4096
+disk_size    = 16384
+extra_disks  = 0
+EOF
 terraform init
 terraform plan
 terraform apply
@@ -31,21 +56,9 @@ terraform apply
 
 test:
 ```shell
-pytest .
-```
-
-coverage:
-```shell
-coverage run -m pytest && coverage report -m
-```
-
-matrix:
-```shell
 tox run
 ```
 
-[//]: # (todo: pre-commit hook for terraform-docs)
-[//]: # (todo: pre-commit hook for sphinx (include terraform-docs build)
 doc:
 ```shell
 make -C docs html
@@ -54,19 +67,4 @@ make -C docs html
 check:
 ```shell
 pre-commit run
-```
-
-format:
-```shell
-black .
-```
-
-lint:
-```shell
-ruff .
-```
-
-type:
-```shell
-mypy .
 ```

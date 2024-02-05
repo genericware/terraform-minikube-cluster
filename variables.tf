@@ -1,35 +1,3 @@
-# secrets
-variable "argocd_admin_password" {
-  type        = string
-  description = "The ArgoCD admin password."
-  sensitive   = true
-}
-
-variable "grafana_admin_password" {
-  type        = string
-  description = "The ArgoCD admin password."
-  sensitive   = true
-}
-
-variable "minio_root_password" {
-  type        = string
-  description = "The MinIO root password."
-  sensitive   = true
-}
-
-variable "minio_loki_password" {
-  type        = string
-  description = "The MinIO loki password."
-  sensitive   = true
-}
-
-variable "minio_tempo_password" {
-  type        = string
-  description = "The MinIO tempo password."
-  sensitive   = true
-}
-
-# cluster
 variable "cluster_name" {
   type        = string
   description = "The minikube name."
@@ -38,6 +6,23 @@ variable "cluster_name" {
 variable "driver" {
   type        = string
   description = "The minikube driver."
+
+  validation {
+    condition     = contains(["docker", "kvm2", "qemu2"], var.driver)
+    error_message = "Valid option(s) for 'driver': 'docker', 'kvm2', 'qemu2'"
+  }
+}
+
+variable "network" {
+  type        = string
+  description = "The minikube network."
+  default     = null
+  nullable    = true
+
+  validation {
+    condition     = var.network == null || var.network == "builtin" || var.network == "socket_vmnet"
+    error_message = "Valid option(s) for 'network': null, 'builtin', 'socket_vmnet'"
+  }
 }
 
 variable "nodes" {
